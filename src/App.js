@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import ThemeSwitcher from './ThemeSwitcher.js'
+import CustomTheme from './CustomTheme.js'
 import ThemeTabs from './ThemeTabs.js'
 import FooterSwitch from './FooterSwitch.js'
 import LogoSwitcher from './LogoSwitcher.js'
@@ -57,6 +58,19 @@ class App extends Component {
        widgetColor: widgetColor,
        textColor: textColor
      });
+   }
+
+   onCustomColorChange(bgColor, textColor) {
+     this.setState({
+       bgColor:bgColor,
+       textColor: textColor
+     })
+   }
+
+   onWidgetColorChange(widgetColor){
+     this.setState({
+       widgetColor: widgetColor
+     })
    }
 
    onFooterSwitched(footerOn){
@@ -174,6 +188,9 @@ class App extends Component {
               <div className="pa3">
                 {!this.state.customTheme &&
                 <ThemeSwitcher onChangeParentStyle={this.onThemeChange.bind(this)} />
+                }
+                {this.state.customTheme &&
+                <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} />
                 }
               </div>
 
