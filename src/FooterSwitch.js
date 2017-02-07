@@ -32,7 +32,7 @@ class FooterSwitch extends Component {
     var footerOn = this.state.footerOn;
 
     return (
-      <div className="pa3 gb-config-mid pointer" onClick={this.onClick.bind(this)}>
+      <div className="pa3 bb b--gb-config-mid pointer" onClick={this.onClick.bind(this)}>
         Dashboard footer
           {footerOn ? (
             <div className="fr br4 bg-gb-green pa1">

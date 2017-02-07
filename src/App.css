@@ -24,13 +24,22 @@
 }
 
 .gb-background{
-  background-color: #404344;
+  background-color: #2A2A2A;
 }
 .gb-config-dark{
-  background-color: #585D5F;
+  background-color: #404344;
 }
+
 .gb-config-mid{
   background-color: #717779;
+}
+
+.gb-tab-selected{
+  background-color: #3A3A3A;
+}
+
+.b--gb-config-mid{
+  border-color: #585D5F;
 }
 
 .b--config-mid{

@@ -182,12 +182,12 @@ class App extends Component {
           {this.state.customizeMode &&
           <div className="cf w-30 fl relative overflow-scroll">
             <div className="ma3  br2 gb-config-dark overflow-hidden">
-              <div className="gb-config-mid pa3">
+              <div className="bb b--gb-config-mid pa3">
                 <ThemeTabs onThemeTypeChange={this.onThemeTypeChange.bind(this)}/>
               </div>
               <div className="pa3">
                 {!this.state.customTheme &&
-                <ThemeSwitcher onChangeParentStyle={this.onThemeChange.bind(this)} />
+                <ThemeSwitcher onChangeParentStyle={this.onThemeChange.bind(this)} theme={(this.state.bgColor == "#101214") ? "dark" : ""} />
                 }
                 {this.state.customTheme &&
                 <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} />

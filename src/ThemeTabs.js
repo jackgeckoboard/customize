@@ -40,7 +40,7 @@ class ThemeTabs extends Component {
               Theme
             </div>
           ) : (
-            <div className="w-50 gb-config-mid fl tc pa2 f6 fw5 pointer">
+            <div className="w-50 gb-tab-selected fl tc pa2 f6 fw5 pointer">
               Theme
             </div>
           )}
@@ -50,7 +50,7 @@ class ThemeTabs extends Component {
               Custom
             </div>
           ) : (
-            <div className="w-50 gb-config-mid fl tc pa2 f6 fw5 pointer">
+            <div className="w-50 gb-tab-selected fl tc pa2 f6 fw5 pointer">
               Custom
             </div>
           )}
