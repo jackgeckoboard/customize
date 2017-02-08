@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './logo.svg'
 
 class CustomizeDashboard extends Component {
 
@@ -21,7 +22,9 @@ class CustomizeDashboard extends Component {
       background: this.props.bgColor
     }
 
-    var currentdate = new Date();
+    var isCustomLogo=(this.props.imgSrc!="")
+
+    var logoOff=(this.props.logo == "Blank")
 
 
     return (
@@ -67,17 +70,17 @@ class CustomizeDashboard extends Component {
               <span className="o-50 mr2 fw3">12:35</span>
             } Dashboard Title</h1>
           </div>
+
+          {!logoOff &&
+
           <div className="fl w-30 pa3 tr">
 
-            {this.props.logo === "Geckoboard" &&
-              <img src="https://d2s28ygc2k7998.cloudfront.net/images/masthead-logo-green.svg" className="w2 h2 br2 mr3"/>
-            }
-
-            {this.props.logo === "Custom" &&
-              <img src={this.props.imgSrc} className="h2"/>
+            { isCustomLogo ? <img src={this.props.imgSrc} className="h2"/> :
+              <img src={logo} className=" h2 mr3"/>
             }
 
           </div>
+        }
 
         </div>
       }

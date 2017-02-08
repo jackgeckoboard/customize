@@ -14,7 +14,8 @@ class CustomTheme extends Component {
       customWidgetColor: '',
       colorInputText:'',
       colorSwatchBorder: '',
-      widgetType:''
+      widgetType:'',
+      swatchHover: false
     };
   }
 
@@ -43,12 +44,23 @@ class CustomTheme extends Component {
 
    let customHSL = convert.hex.hsl(color)
 
+   if (customHSL[2] < 75){
+     let textColor = 'white';
+     this.props.onTextColorChange(textColor)
+   } else {
+     let textColor = 'rgba(0,0,0,0.8)'
+     this.props.onTextColorChange(textColor)
+   }
+
      this.setState({
        customWidgetColor: "#" + convert.hsl.hex(customHSL[0], customHSL[1], 20),
      })
 
+     if (this.state.widgetType=='custom'){
+      this.props.onWidgetColorChange(this.state.customWidgetColor)
+    }
 
-   this.props.onWidgetColorChange(this.state.customWidgetColor)
+
 
  }
 
@@ -91,13 +103,16 @@ class CustomTheme extends Component {
 
    let customHSL = convert.hex.hsl(event.target.value)
 
+
      this.setState({
        customWidgetColor: "#" + convert.hsl.hex(customHSL[0], customHSL[1], 20),
      })
-
-   this.props.onWidgetColorChange("#" + convert.hsl.hex(customHSL[0], customHSL[1], 20))
-
+    if (this.state.widgetType=='custom'){
+       this.props.onWidgetColorChange("#" + convert.hsl.hex(customHSL[0], customHSL[1], 20))
+     }
    this.props.onCustomColorChange(event.target.value)
+
+
 
  }
 
@@ -119,6 +134,18 @@ class CustomTheme extends Component {
     this.props.onWidgetColorChange(this.state.customWidgetColor)
     this.setState({
       widgetType: "custom"
+    })
+  }
+
+  onSwatchHover(){
+    this.setState({
+      swatchHover: true
+    })
+  }
+
+  onSwatchUnhover(){
+    this.setState({
+      swatchHover: false
     })
   }
 
@@ -149,9 +176,11 @@ class CustomTheme extends Component {
     return (
       <div>
         <div className="cf" onClick={this.onHideColorPicker.bind(this)}>
-          <div className="pointer w-50 fl pa1 mb1">
+          <div className="pointer w-50 fl pa1 mb1" onMouseEnter={this.onSwatchHover.bind(this)} onMouseLeave={this.onSwatchUnhover.bind(this)}>
             <p className="mt0">Background</p>
-            <div className="h2 w2 br-100 dib v-mid mr2" style={customSwatchStyle} onClick={this.onHideShowColorPicker.bind(this)}></div>
+            <div className="h2 w2 br-100 dib v-mid mr2 pt1 tc white" style={customSwatchStyle} onClick={this.onHideShowColorPicker.bind(this)}>
+              {(this.state.swatchHover ? <i className="fa fa-eyedropper" aria-hidden="true"></i> : "")}
+            </div>
             <input value={this.state.colorInputText} onChange={this.onInputChange.bind(this)} className="b--silver ba dib sans-serif w3 pa2 br2"/>
 
 
@@ -173,7 +202,7 @@ class CustomTheme extends Component {
 
         </div>
   {this.state.colorPickerVisible &&
-        <div className="absolute mt2 pa2 br2 gb-background shadow-1">
+        <div className="absolute mt2 pa2 br2 gb-background shadow-1 front">
           <ColorPicker value={this.state.color} onDrag={this.onDrag.bind(this)} />
         </div>
           }

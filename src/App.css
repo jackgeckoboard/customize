@@ -53,3 +53,11 @@
 .h6{
   height: 20rem;
 }
+
+.w0{
+  width: 0;
+}
+
+.front{
+  z-index:9999;
+}

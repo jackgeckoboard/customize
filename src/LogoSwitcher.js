@@ -81,37 +81,18 @@ class LogoSwitcher extends Component {
     var isBlank = this.state.isBlank;
 
     return (
-      <div className=" br2 ba b--config-mid cf overflow-hidden">
-          {isGeckoboard ? (
-            <div className="gb-config-mid w-40 fl tc pa2 f6  pointer">
-              Geckoboard
-            </div>
-          ) : (
-            <div className="w-40 fl tc pa2  white-50 f6  pointer b1 br b--config-mid" onClick={this.onClickGeckoboard.bind(this)}>
-              Geckoboard
-            </div>
-          )}
+      <div className="cf pt2 pb3">
+        <p className="fl ma0">Logo</p>
 
-          {isCustom ? (
-            <div className="w-30 gb-config-mid fl tc pa2 f6  pointer" >
-              Custom
-            </div>
-          ) : (
-            <div className="w-30 fl tc pa2 white-50 f6  b1 br b--config-mid pointer" onClick={this.onClickCustom.bind(this)}>
-              Custom
-            </div>
-          )}
-
-          {isBlank ? (
-            <div className="w-30 gb-config-mid fl tc pa2 f6  pointer">
-              No Logo
-            </div>
-          ) : (
-            <div className="w-30 fl tc pa2 white-50 f6  pointer"  onClick={this.onClickNoLogo.bind(this)}>
-              No Logo
-            </div>
-          )}
-
+      {!isBlank ? (
+        <div className="fr br4 bg-gb-green pa1 pointer"  onClick={this.onClickNoLogo.bind(this)}>
+          <div className="fr w1 h1 ml4 bg-white br3"></div>
+        </div>
+      ) : (
+          <div className="fr br4 bg-silver pa1 pointer" onClick={this.onClickCustom.bind(this)}>
+            <div className="fl w1 h1 mr4 bg-white br3"></div>
+          </div>
+      )}
 
       </div>
     );

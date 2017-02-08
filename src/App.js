@@ -73,6 +73,12 @@ class App extends Component {
      })
    }
 
+   onTextColorChange(textColor){
+     this.setState({
+       textColor: textColor
+     })
+   }
+
    onFooterSwitched(footerOn){
      if (footerOn){
        this.setState({
@@ -129,10 +135,13 @@ class App extends Component {
 
     var isCustomizeMode = this.state.customizeMode
 
-    var isCustomLogo = (this.state.logo == "Custom")
+    var isCustomLogo = (this.state.logo != "Blank")
 
     var clockOn = this.state.clockOn
 
+    var dashboardBackgroundStyle = {
+      background: this.state.bgColor
+    }
 
 
     return (
@@ -190,7 +199,7 @@ class App extends Component {
                 <ThemeSwitcher onChangeParentStyle={this.onThemeChange.bind(this)} theme={(this.state.bgColor == "#101214") ? "dark" : ""} />
                 }
                 {this.state.customTheme &&
-                <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} />
+                <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} onTextColorChange={this.onTextColorChange.bind(this) }/>
                 }
               </div>
 
@@ -199,32 +208,36 @@ class App extends Component {
               <FooterSwitch onFooterSwitched={this.onFooterSwitched.bind(this)} />
                 {this.state.footerOn &&
                   <div className="pa3">
-                    <p>Logo</p>
                     <LogoSwitcher currentLogoState={this.state.logo} onLogoChanged={this.onLogoChanged.bind(this)} />
                       {isCustomLogo && this.state.imgSrc.length == 0  &&
-                      <div className="br3 ba b--silver b--dotted bw2 mt3 mb2 pa3 tc">
-                        <i className="fa fa-upload mr2 f3 silver mb2"></i><br />
-                        Drop logo here<br />
+                      <div className="br2 bg-white-10 bw2 mb2 ph3 pv4 tc">
+                        <i className="fa fa-cloud-upload mr2 f2 silver mb2"></i><br />
+                        Drop logo here or
                       <input
                               ref="file"
                               type="file"
                               name="user[image]"
                               multiple="true"
                               value=""
-                              className="o-0"
+                              className="o-0 di w0"
                               id="uploadFile"
                               onChange={this.onFileChange.bind(this)}/>
-                            <label htmlFor="uploadFile" className="gb-green dim pointer">Click to choose file</label>
+                            <label htmlFor="uploadFile" className="gb-green dim pointer di"> choose file</label>
                       </div>
 
                       }
 
                       {isCustomLogo && this.state.imgSrc.length > 0 &&
                         <div>
-                        <div className="pt3 ph3">
-                          <img src={this.state.imgSrc}/>
+                        <div className="br2 hide-child relative" style={dashboardBackgroundStyle}>
+                          <div className="ph5 pv4">
+                            <img src={this.state.imgSrc}/>
+                          </div>
+                          <div onClick={this.onFileReset.bind(this)} className="br2 absolute bg-black-50 w-100 h-100 left-0 top-0 child tc ma0 link pointer dim f6 white pt4">
+                            <i className="fa fa-trash-o mr3"></i>Remove
+                          </div>
                         </div>
-                      <p onClick={this.onFileReset.bind(this)} className="tr ma0 link pointer dim gb-green f6"><i className="fa fa-close mr3"></i>Remove</p>
+
                       </div>
                     }
                     <div className="cf pt4 pb3">
