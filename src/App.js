@@ -143,6 +143,11 @@ class App extends Component {
       background: this.state.bgColor
     }
 
+    const maxHeightStyle = {
+      maxHeight: 'calc(100vh - 100px)',
+      overflowY: 'scroll'
+    }
+
 
     return (
       <div className="App white sans-serif" >
@@ -189,7 +194,7 @@ class App extends Component {
 
         <div  className="cf ">
           {this.state.customizeMode &&
-          <div className="cf w-30 fl relative overflow-scroll">
+          <div className="cf w-30 fl relative ofy-scr" style={maxHeightStyle}>
             <div className="ma3  br2 gb-config-dark overflow-hidden">
               <div className="bb b--gb-config-mid pa3">
                 <ThemeTabs onThemeTypeChange={this.onThemeTypeChange.bind(this)}/>
@@ -255,8 +260,8 @@ class App extends Component {
                   </div>
                 }
             </div>
-            <div className="w-100 pa4">
-              <button className="bg-gb-green br2 pv2 ph3 fr white bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Save</button>
+            <div className="w-100 pa4 mb4">
+              <button className="bg-gb-green br2 pv2 ph3 fr white bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Save and apply</button>
               <button className="bg-light-gray br2 pv2 ph3 fr near-black mr3 bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Cancel</button>
             </div>
         </div>

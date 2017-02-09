@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg'
+import wires from './wires.svg'
 
 class CustomizeDashboard extends Component {
 
@@ -17,8 +18,7 @@ class CustomizeDashboard extends Component {
     }
 
     var dashboardStyle={
-      transform: "scale(0.95)",
-      transformOrigin: "50%",
+
       background: this.props.bgColor
     }
 
@@ -26,9 +26,37 @@ class CustomizeDashboard extends Component {
 
     var logoOff=(this.props.logo == "Blank")
 
+    const tvStyle = {
+      background: 'black',
+      boxShadow: '0 10px 50px 0 rgba(0,0,0,0.5)',
+    }
+
+    const lightStyle = {
+      width: '5px',
+      height: '5px',
+      float: 'right',
+      border: '1px solid #80B636',
+      borderRadius: '50%',
+      marginTop: '1rem',
+      marginRight: '0.5rem'
+    }
+
+    const scaleDown = {
+      transform: "scale(0.90)",
+      transformOrigin: "50%",
+    }
+
+    const containerStyle = {
+      maxHeight: "calc(100vh - 100px)",
+      overflow: 'hidden'
+    }
+
 
     return (
-      <div className="w-70 fl pa2" style={dashboardStyle} >
+      <div className="w-70 fl" style={containerStyle}>
+      <div className="mt3" style={scaleDown}>
+      <div className="ph3 pt3 pb4" style={tvStyle}>
+      <div className="pa2" style={dashboardStyle} >
 
         <div className="cf mh1">
           <div className="fl w-25 pa1">
@@ -85,6 +113,11 @@ class CustomizeDashboard extends Component {
         </div>
       }
       </div>
+      <div style={lightStyle}></div>
+    </div>
+    <img src={wires} className="center db" />
+    </div>
+    </div>
     );
   }
 }
