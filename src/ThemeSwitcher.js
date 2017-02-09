@@ -5,9 +5,11 @@ class ThemeSwitcher extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      theme: this.props.theme
+      theme: this.props.theme,
+      customTheme: this.props.customTheme
     };
   }
+
 
   onClickDark() {
     this.props.onChangeParentStyle("#101214", "#2A2A2A", "#EEEEEE")

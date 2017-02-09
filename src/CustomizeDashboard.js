@@ -26,6 +26,8 @@ class CustomizeDashboard extends Component {
 
     var logoOff=(this.props.logo == "Blank")
 
+    let scaleToFit=this.props.scaleToFit
+
     const tvStyle = {
       background: 'black',
       boxShadow: '0 10px 50px 0 rgba(0,0,0,0.5)',
@@ -51,6 +53,10 @@ class CustomizeDashboard extends Component {
       overflow: 'hidden'
     }
 
+    let notScaled = {
+      transform: "scale(1.2)",
+      transformOrigin: "0 0"
+    }
 
 
 
@@ -60,35 +66,76 @@ class CustomizeDashboard extends Component {
       <div className="ph3 pt3 pb4" style={tvStyle}>
       <div className="pa2" style={dashboardStyle} >
 
-        <div className="cf mh1">
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
+        <div className="overflow-hidden">
+
+          {!scaleToFit ? (
+          <div style={notScaled}>
+            <div className="cf mh1">
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+            </div>
+
+            <div className="cf mh1">
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+              <div className="fl w-25 pa1">
+                <div className="h5" style={widgetStyle}></div>
+              </div>
+            </div>
           </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
+
+      ) : (
+        <div>
+          <div className="cf mh1">
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
           </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
+
+          <div className="cf mh1">
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
+            <div className="fl w-25 pa1">
+              <div className="h5" style={widgetStyle}></div>
+            </div>
           </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
           </div>
+      )}
         </div>
 
-        <div className="cf mh1">
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
-          </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
-          </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
-          </div>
-          <div className="fl w-25 pa1">
-            <div className="h5" style={widgetStyle}></div>
-          </div>
-        </div>
         {this.props.footerOn ?
         <div className="cf mh1 ">
 

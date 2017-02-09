@@ -23,6 +23,7 @@ class App extends Component {
       customizeMode: false,
       clockOn: true,
       imgSrc: "",
+      scaleToFit: true
     };
   }
 
@@ -131,6 +132,21 @@ class App extends Component {
      });
    }
 
+   onScaleToFitSwitch(){
+
+      if (this.state.scaleToFit) {
+       this.setState({
+         scaleToFit: false
+       });
+     }
+
+     else {
+      this.setState({
+        scaleToFit: true
+      });
+    }
+   }
+
   render() {
 
     var isCustomizeMode = this.state.customizeMode
@@ -148,6 +164,11 @@ class App extends Component {
       overflowY: 'scroll'
     }
 
+    let scaleToFit = this.state.scaleToFit
+
+    const maxWidthDashboard = {
+      maxWidth: "90rem"
+    }
 
     return (
       <div className="App white sans-serif" >
@@ -192,7 +213,7 @@ class App extends Component {
 
 
 
-        <div  className="cf ">
+        <div  className="cf" style={maxWidthDashboard}>
           {this.state.customizeMode &&
           <div className="cf w-30 fl relative ofy-scr" style={maxHeightStyle}>
             <div className="ma3  br2 gb-config-dark overflow-hidden">
@@ -260,7 +281,35 @@ class App extends Component {
                   </div>
                 }
             </div>
-            <div className="w-100 pa4 mb4">
+
+
+            <div className="ma3 cf br2 gb-config-dark overflow-hidden">
+            {scaleToFit ? (
+            <div className="pa3 pointer" onClick={this.onScaleToFitSwitch.bind(this)}>
+              Scale to Fit
+
+                  <div className="fr br4 bg-gb-green pa1">
+                    <div className="fr w1 h1 ml4 bg-white br3"></div>
+                  </div>
+
+
+              </div>
+              ) :
+              <div className="pa3  pointer" onClick={this.onScaleToFitSwitch.bind(this)}>
+                Scale to Fit
+
+
+                      <div className="fr br4 bg-silver pa1">
+                        <div className="fl w1 h1 mr4 bg-white br3"></div>
+                      </div>
+
+                </div>
+                }
+
+            </div>
+
+
+            <div className="w-100 pa3 mb5">
               <button className="bg-gb-green br2 pv2 ph3 fr white bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Save and apply</button>
               <button className="bg-light-gray br2 pv2 ph3 fr near-black mr3 bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Cancel</button>
             </div>
@@ -268,7 +317,7 @@ class App extends Component {
         }
 
         {isCustomizeMode ? (
-          <CustomizeDashboard bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} textColor={this.state.textColor} footerOn={this.state.footerOn} clockOn={this.state.clockOn} logo={this.state.logo} imgSrc={this.state.imgSrc}/>
+          <CustomizeDashboard bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} textColor={this.state.textColor} footerOn={this.state.footerOn} clockOn={this.state.clockOn} logo={this.state.logo} imgSrc={this.state.imgSrc} scaleToFit={this.state.scaleToFit}/>
         ) : (
           <NormalDashboard bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} textColor={this.state.textColor} />
         )}
