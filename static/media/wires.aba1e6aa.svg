@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="49px" height="180px" viewBox="0 0 49 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Wires</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="83.9923469%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#000000" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Config-states-Copy" transform="translate(-1602.000000, -522.000000)" fill-rule="nonzero" fill="url(#linearGradient-1)">
+            <g id="Wires" transform="translate(1602.000000, 522.000000)">
+                <polygon id="Line" points="6.75471731e-15 0.995327205 -9.33791671e-17 176.029355 3 176.029355 3 0.995327205"></polygon>
+                <path d="M17.5,0.995327205 L17.5,33.5061616 C17.5,39.6200316 19.0704086,44.8707589 22.0752046,49.7099311 C24.3930902,53.4428458 27.1267105,56.4603261 31.8889419,60.9547509 C32.1323036,61.184427 34.402049,63.3128794 35.0533617,63.9320641 C42.4444141,70.9585305 45.3369701,75.4900666 45.3369701,82.0357538 L45.3369701,179.579906 L48.3369701,179.579906 L48.3369701,82.0357538 C48.3369701,74.4410226 45.0575909,69.3034814 37.1203779,61.7577955 C36.4601301,61.1301164 34.1846693,58.9963045 33.9480282,58.772971 C24.3048137,49.6720477 20.5,43.5444609 20.5,33.5061616 L20.5,0.995327205 L17.5,0.995327205 Z" id="Path-2"></path>
+            </g>
+        </g>
+    </g>
+</svg>
