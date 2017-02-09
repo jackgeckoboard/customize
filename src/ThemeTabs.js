@@ -5,7 +5,7 @@ class ThemeTabs extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isCustom: false
+      isCustom: this.props.customTheme
     };
   }
 

@@ -197,7 +197,7 @@ class App extends Component {
           <div className="cf w-30 fl relative ofy-scr" style={maxHeightStyle}>
             <div className="ma3  br2 gb-config-dark overflow-hidden">
               <div className="bb b--gb-config-mid pa3">
-                <ThemeTabs onThemeTypeChange={this.onThemeTypeChange.bind(this)}/>
+                <ThemeTabs onThemeTypeChange={this.onThemeTypeChange.bind(this)} customTheme={this.state.customTheme}/>
               </div>
               <div className="pa3">
                 {!this.state.customTheme &&

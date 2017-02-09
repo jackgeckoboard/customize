@@ -52,6 +52,8 @@ class CustomizeDashboard extends Component {
     }
 
 
+
+
     return (
       <div className="w-70 fl" style={containerStyle}>
       <div className="mt3" style={scaleDown}>
@@ -87,7 +89,7 @@ class CustomizeDashboard extends Component {
             <div className="h5" style={widgetStyle}></div>
           </div>
         </div>
-        {this.props.footerOn &&
+        {this.props.footerOn ?
         <div className="cf mh1 ">
 
 
@@ -110,7 +112,8 @@ class CustomizeDashboard extends Component {
           </div>
         }
 
-        </div>
+        </div> :
+        <div className="cf mh1 o-0"><h1 className="pa1 fw5 f2 mv2 dib">Footer Hidden</h1></div>
       }
       </div>
       <div style={lightStyle}></div>
