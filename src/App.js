@@ -23,7 +23,8 @@ class App extends Component {
       customizeMode: false,
       clockOn: true,
       imgSrc: "",
-      scaleToFit: true
+      scaleToFit: true,
+      settingsMenuOpen: false
     };
   }
 
@@ -100,7 +101,8 @@ class App extends Component {
 
    onEnterCustomizeMode(){
      this.setState({
-       customizeMode: true
+       customizeMode: true,
+       settingsMenuOpen: false
      });
    }
 
@@ -147,6 +149,23 @@ class App extends Component {
     }
    }
 
+   onOpenSettingsMenu(){
+       this.setState({
+         settingsMenuOpen: true
+       });
+
+   }
+
+   onCloseSettingsMenu(){
+     if (this.state.settingsMenuOpen){
+     this.setState({
+       settingsMenuOpen: false
+     });
+   }
+   }
+
+
+
   render() {
 
     var isCustomizeMode = this.state.customizeMode
@@ -170,8 +189,14 @@ class App extends Component {
       maxWidth: "90rem"
     }
 
+    let settingsMenuOpen = this.state.settingsMenuOpen
+
+    const settingsMenuStyle = {
+      left: "66vw"
+    }
+
     return (
-      <div className="App white sans-serif" >
+      <div className="App white sans-serif" onClick={this.onCloseSettingsMenu.bind(this)}>
         <div className="bg-dark-gray cf pv2 ph3">
           <div className="w-10 fl">
             <img src="https://d2s28ygc2k7998.cloudfront.net/images/masthead-logo-green.svg" className="w2 h2 br2"/>
@@ -200,14 +225,21 @@ class App extends Component {
             <div className="w-60 fl">
               <div className="fr dib">
                 <p className="f6 ma0 dib mr5 dim pointer"><i className="fa fa-share mr2"></i>Share</p>
-                <p className="f6 ma0 dib mr5 dim pointer"><i className="fa fa-cog mr2"></i>Settings</p>
-                <p className="f6 ma0 dib mr5 dim pointer" onClick={this.onEnterCustomizeMode.bind(this)}><i className="fa fa-paint-brush mr2"></i> Customize</p>
+                <p className="f6 ma0 dib mr5 dim pointer" onClick={this.onOpenSettingsMenu.bind(this)}><i className="fa fa-cog mr2" ></i>Settings</p>
                 <p className="f6 ma0 dib mr5 dim pointer"><i className="fa fa-expand mr2"></i>Full screen</p>
                 <div className="bg-gb-green br2 pv2 ph3 ma0 f6 dib dim pointer"><i className="fa fa-plus mr2"></i>Add widget</div>
               </div>
             </div>
           </div>
         )}
+        {settingsMenuOpen &&
+                  <div className="absolute f6 bg-light-gray br2 br--bottom dark-gray pa0 overflow-hidden shadow-2" style={settingsMenuStyle}>
+                    <ul className="list pa0 ma0">
+                      <li className="pv3 ph3 bg-animate hover-bg-white pointer" onClick={this.onEnterCustomizeMode.bind(this)}>Customize appearance</li>
+                      <li className="pv3 ph3 bg-animate hover-bg-white pointer">Dashboard settings</li>
+                    </ul>
+                  </div>
+                  }
 
 
 
