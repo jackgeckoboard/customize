@@ -164,12 +164,12 @@ class CustomTheme extends Component {
 
     const darkThemeStyle = {
       background: "#2a2a2a",
-      border: "2px solid #787878"
+      border: "2px solid" + this.state.color
     }
 
     const lightThemeStyle = {
       background: "#ffffff",
-      border: "2px solid #C9C9C9"
+      border: "2px solid" + this.state.color
     }
 
 
