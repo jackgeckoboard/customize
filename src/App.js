@@ -192,7 +192,7 @@ class App extends Component {
     let settingsMenuOpen = this.state.settingsMenuOpen
 
     const settingsMenuStyle = {
-      left: "66vw"
+      right: "19rem"
     }
 
     return (
@@ -210,7 +210,7 @@ class App extends Component {
         {isCustomizeMode ? (
           <div className="bg-mid-gray cf pa3">
             <div className="w-50 fl">
-              <p className="f6 ma0"><span className="fw6 mr4">Dashboard Title</span><i className="fa fa-angle-right mr2"></i><span className="ml3">Edit Theme</span></p>
+              <p className="f6 ma0"><span className="fw6 mr4">Dashboard Title</span><i className="fa fa-angle-right mr2"></i><span className="ml3">Customize appearance</span></p>
             </div>
             <div className="w-50 fl">
               <div className="fr dib">
