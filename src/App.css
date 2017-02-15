@@ -65,3 +65,23 @@
 .front{
   z-index:9999;
 }
+
+.toast-enter {
+  transform: translate(-10rem);
+  opacity:0;
+}
+.toast-enter.toast-enter-active {
+  transform: translate(0%);
+  opacity: 1;
+  transition: all 300ms ease-out;
+  transition-delay: 500ms;
+}
+.toast-leave {
+  transform: translate(0%);
+  opacity: 1;
+}
+.toast-leave.toast-leave-active {
+  transform: translate(-10rem);
+  opacity: 0;
+  transition: all 300ms ease-in;
+}

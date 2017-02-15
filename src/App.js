@@ -6,6 +6,8 @@ import FooterSwitch from './FooterSwitch.js'
 import LogoSwitcher from './LogoSwitcher.js'
 import NormalDashboard from './NormalDashboard.js'
 import CustomizeDashboard from './CustomizeDashboard.js'
+import TransitionGroup from 'react-addons-css-transition-group'
+import Toast from './Toast.js'
 import './App.css';
 
 
@@ -24,7 +26,8 @@ class App extends Component {
       clockOn: true,
       imgSrc: "",
       scaleToFit: true,
-      settingsMenuOpen: false
+      settingsMenuOpen: false,
+      toastVisible: false
     };
   }
 
@@ -108,8 +111,10 @@ class App extends Component {
 
    onExitCustomizeMode(){
      this.setState({
-       customizeMode: false
+       customizeMode: false,
+       toastVisible: true
      });
+     setTimeout(function() { this.setState({toastVisible: false}); }.bind(this), 5000);
    }
 
 
@@ -158,11 +163,12 @@ class App extends Component {
 
    onCloseSettingsMenu(){
      if (this.state.settingsMenuOpen){
-     this.setState({
-       settingsMenuOpen: false
-     });
+       this.setState({
+         settingsMenuOpen: false
+       });
+     }
    }
-   }
+
 
 
 
@@ -171,6 +177,8 @@ class App extends Component {
     var isCustomizeMode = this.state.customizeMode
 
     var isCustomLogo = (this.state.logo != "Blank")
+
+
 
     var clockOn = this.state.clockOn
 
@@ -195,8 +203,11 @@ class App extends Component {
       right: "19rem"
     }
 
+
+
+
     return (
-      <div className="App white sans-serif" onClick={this.onCloseSettingsMenu.bind(this)}>
+      <div className="App white sans-serif relative" onClick={this.onCloseSettingsMenu.bind(this)}>
         <div className="bg-dark-gray cf pv2 ph3">
           <div className="w-10 fl">
             <img src="https://d2s28ygc2k7998.cloudfront.net/images/masthead-logo-green.svg" className="w2 h2 br2"/>
@@ -342,7 +353,7 @@ class App extends Component {
 
 
             <div className="w-100 pa3 mb5">
-              <button className="bg-gb-green br2 pv2 ph3 fr white bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Save and apply</button>
+              <button className="bg-gb-green br2 pv2 ph3 fr white bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Save</button>
               <button className="bg-light-gray br2 pv2 ph3 fr near-black mr3 bn dim pointer" onClick={this.onExitCustomizeMode.bind(this)}>Cancel</button>
             </div>
         </div>
@@ -354,14 +365,17 @@ class App extends Component {
           <NormalDashboard bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} textColor={this.state.textColor} />
         )}
 
+        <TransitionGroup transitionName="toast">
+            { this.state.toastVisible && <Toast key="success" transitionEnterTimeout={500} /> }
 
-
-
-
+        </TransitionGroup>
 
 
 
       </div>
+
+
+
         </div>
 
 
