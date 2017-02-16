@@ -8,6 +8,7 @@ import NormalDashboard from './NormalDashboard.js'
 import CustomizeDashboard from './CustomizeDashboard.js'
 import TransitionGroup from 'react-addons-css-transition-group'
 import Toast from './Toast.js'
+import StarterPlanPanel from './StarterPlanPanel.js'
 import './App.css';
 
 
@@ -27,7 +28,8 @@ class App extends Component {
       imgSrc: "",
       scaleToFit: true,
       settingsMenuOpen: false,
-      toastVisible: false
+      toastVisible: false,
+      starterPlan: false
     };
   }
 
@@ -169,6 +171,20 @@ class App extends Component {
      }
    }
 
+   onPlanTypeToggle(){
+     if (this.state.starterPlan){
+       this.setState({
+         starterPlan: false
+       })
+     }
+     else {
+       this.setState({
+         starterPlan: true
+       })
+
+     }
+   }
+
 
 
 
@@ -203,8 +219,7 @@ class App extends Component {
       right: "19rem"
     }
 
-
-
+    const starterPlan = this.state.starterPlan
 
     return (
       <div className="App white sans-serif relative" onClick={this.onCloseSettingsMenu.bind(this)}>
@@ -213,7 +228,7 @@ class App extends Component {
             <img src="https://d2s28ygc2k7998.cloudfront.net/images/masthead-logo-green.svg" className="w2 h2 br2"/>
           </div>
           <div className="w-90 fl tr f6">
-            <p className="ma2"><span className="mr3">Screens</span> <span className="mr3">Help</span> J</p>
+            <p className="ma2" onClick={this.onPlanTypeToggle.bind(this)}><span className="mr3">Screens</span> <span className="mr3" >Help</span> J</p>
           </div>
         </div>
 
@@ -265,10 +280,12 @@ class App extends Component {
               </div>
               <div className="pa3">
                 {!this.state.customTheme &&
-                <ThemeSwitcher onChangeParentStyle={this.onThemeChange.bind(this)} theme={(this.state.bgColor == "#101214") ? "dark" : ""} />
+                <ThemeSwitcher starterPlan={starterPlan} onChangeParentStyle={this.onThemeChange.bind(this)} theme={(this.state.bgColor == "#101214") ? "dark" : ""} />
                 }
                 {this.state.customTheme &&
-                <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} onTextColorChange={this.onTextColorChange.bind(this) }/>
+                <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} onTextColorChange={this.onTextColorChange.bind(this) }
+                starterPlan
+                  />
                 }
               </div>
 
@@ -277,7 +294,8 @@ class App extends Component {
               <FooterSwitch onFooterSwitched={this.onFooterSwitched.bind(this)} />
                 {this.state.footerOn &&
                   <div className="pa3">
-                    <LogoSwitcher currentLogoState={this.state.logo} onLogoChanged={this.onLogoChanged.bind(this)} />
+                    <LogoSwitcher currentLogoState={this.state.logo} onLogoChanged={this.onLogoChanged.bind(this)}
+                    starterPlan={starterPlan}/>
                       {isCustomLogo && this.state.imgSrc.length == 0  &&
                       <div className="br2 bg-white-10 bw2 mb2 ph3 pv4 tc">
                         <i className="fa fa-cloud-upload mr2 f2 silver mb2"></i><br />
@@ -350,6 +368,8 @@ class App extends Component {
                 }
 
             </div>
+
+            { starterPlan && <StarterPlanPanel /> }
 
 
             <div className="w-100 pa3 mb5">

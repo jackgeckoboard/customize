@@ -172,10 +172,23 @@ class CustomTheme extends Component {
       border: "2px solid" + this.state.color
     }
 
+    const starterPlan = this.props.starterPlan
+
+    const starterPlanPillStyle = {
+      backgroundColor: "#5C6B78",
+      fontSize: "12px",
+      verticalAlign: "bottom"
+    }
 
     return (
       <div>
         <div className="cf" onClick={this.onHideColorPicker.bind(this)}>
+          {starterPlan &&
+            <div className="br2 bg-mid-gray tc pa2 ttu fw5 mb2" style={starterPlanPillStyle}>
+              <i className="fa fa-arrow-circle-up mr1"></i> Upgrade
+            </div>
+          }
+
           <div className="pointer w-50 fl pa1 mb1" onMouseEnter={this.onSwatchHover.bind(this)} onMouseLeave={this.onSwatchUnhover.bind(this)}>
             <p className="mt0">Background</p>
             <div className="h2 w2 br-100 dib v-mid mr2 pt1 tc white" style={customSwatchStyle} onClick={this.onHideShowColorPicker.bind(this)}>

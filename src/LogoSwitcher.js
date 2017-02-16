@@ -80,9 +80,22 @@ class LogoSwitcher extends Component {
 
     var isBlank = this.state.isBlank;
 
+    const starterPlan = this.props.starterPlan
+
+    const starterPlanPillStyle = {
+      backgroundColor: "#5C6B78",
+      fontSize: "12px",
+      verticalAlign: "bottom"
+    }
+
     return (
       <div className="cf pt2 pb3">
         <p className="fl ma0">Logo</p>
+        {starterPlan &&
+          <div className="br2 bg-mid-gray fl pv1 ph2 ml2 ttu fw5 " style={starterPlanPillStyle}>
+            <i className="fa fa-arrow-circle-up mr1"></i> Upgrade
+          </div>
+        }
 
       {!isBlank ? (
         <div className="fr br4 bg-gb-green pa1 pointer"  onClick={this.onClickNoLogo.bind(this)}>

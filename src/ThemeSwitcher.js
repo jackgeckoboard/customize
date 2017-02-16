@@ -61,6 +61,14 @@ class ThemeSwitcher extends Component {
       border: "2px solid #C9C9C9"
     }
 
+    const starterPlanPillStyle = {
+      backgroundColor: "#5C6B78",
+      fontSize: "12px",
+      verticalAlign: "middle"
+    }
+
+    const starterPlan = this.props.starterPlan
+
     return (
         <div className="cf">
           <div className="pointer w-50 fl pa1 mb1" onClick={this.onClickDark.bind(this)}>
@@ -69,24 +77,37 @@ class ThemeSwitcher extends Component {
             </div>
             Dark
           </div>
-          <div className="pointer w-50 fl pa1 mb1" onClick={this.onClickNavy.bind(this)}>
-            <div className="h2 w2 br-100 dib v-mid mr2 white tc pt1" style={navyThemeStyle}>
-                {(this.state.theme=="navy" ? <i className="fa fa-check" aria-hidden="true"></i> : "")}
-            </div>
-            Navy
-          </div>
-          <div className="pointer w-50 fl pa1" onClick={this.onClickPurple.bind(this)}>
-            <div className="h2 w2 br-100 dib v-mid mr2 white tc pt1" style={purpleThemeStyle}>
-                {(this.state.theme=="purple" ? <i className="fa fa-check" aria-hidden="true"></i> : "")}
-            </div>
-            Purple
-          </div>
-          <div className="pointer w-50 fl pa1" onClick={this.onClickLight.bind(this)}>
+          <div className="pointer w-50 fl pa1 mb1" onClick={this.onClickLight.bind(this)}>
             <div className="h2 w2 br-100 dib v-mid mr2 near-black tc pt1" style={lightThemeStyle}>
                 {(this.state.theme=="light" ? <i className="fa fa-check" aria-hidden="true"></i> : "")}
             </div>
             Light
           </div>
+          <div className="pointer w-50 fl pa1" onClick={this.onClickNavy.bind(this)}>
+            <div className="h2 w2 br-100 dib v-mid mr2 white tc pt1" style={navyThemeStyle}>
+                {(this.state.theme=="navy" ? <i className="fa fa-check" aria-hidden="true"></i> : "")}
+            </div>
+            Navy
+            { starterPlan &&
+              <div className="br2 bg-mid-gray dib pv1 ph2 ml2 ttu fw5 " style={starterPlanPillStyle}>
+                <i className="fa fa-arrow-circle-up"></i>
+              </div>
+            }
+          </div>
+
+          <div className="pointer w-50 fl pa1" onClick={this.onClickPurple.bind(this)}>
+            <div className="h2 w2 br-100 dib v-mid mr2 white tc pt1" style={purpleThemeStyle}>
+                {(this.state.theme=="purple" ? <i className="fa fa-check" aria-hidden="true"></i> : "")}
+            </div>
+            Purple
+            { starterPlan &&
+              <div className="br2 bg-mid-gray dib pv1 ph2 ml2 ttu fw5 " style={starterPlanPillStyle}>
+                <i className="fa fa-arrow-circle-up"></i>
+              </div>
+            }
+          </div>
+
+
 
 
         </div>
