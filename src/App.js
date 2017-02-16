@@ -284,7 +284,7 @@ class App extends Component {
                 }
                 {this.state.customTheme &&
                 <CustomTheme bgColor={this.state.bgColor} widgetColor={this.state.widgetColor} onCustomColorChange={this.onCustomColorChange.bind(this)} onWidgetColorChange={this.onWidgetColorChange.bind(this)} onTextColorChange={this.onTextColorChange.bind(this) }
-                starterPlan
+                starterPlan={starterPlan}
                   />
                 }
               </div>

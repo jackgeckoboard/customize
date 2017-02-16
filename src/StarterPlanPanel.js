@@ -10,8 +10,7 @@ class StarterPlanPanel extends Component {
     backgroundColor: "#5C6B78",
     backgroundImage: " url("+  panelBackground  + ")",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center center",
-    backgroundSize: "contain"
+    backgroundPosition: "center center"
   }
 
     return (
@@ -20,7 +19,7 @@ class StarterPlanPanel extends Component {
           Upgrade to save your custom theme
         </p>
         <p className="lh-copy f6">
-          Some of your options aren’t available on your current plan and won’t be saved. Upgrade to save your Navy theme and custom logo.
+          <span className="fw5">Navy theme</span> and <span className="fw5">custom logo</span> aren't available on your current plan and won't be saved.
         </p>
         <button className="bg-transparent gb-green b--none pl0 dim pointer pb2">Upgrade</button>
 
