@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ColorPicker from 'react-color-picker'
 import convert from 'color-convert'
-
+import hsluv from 'hsluv'
 import 'react-color-picker/index.css'
 
 class CustomTheme extends Component {
@@ -42,9 +42,19 @@ class CustomTheme extends Component {
    })
    this.props.onCustomColorChange(color)
 
-   let customHSL = convert.hex.hsl(color)
+   let customHSL = hsluv.hexToHsluv(color)
 
-   if (customHSL[2] < 75){
+   if (customHSL[1] > 70) {
+     customHSL[1] = 70
+   }
+
+   if (customHSL[2] < 30 && customHSL[2] > 15) {
+     customHSL[2] -= 10
+   } else {
+     customHSL[2] = 20
+   }
+
+   if (hsluv.hexToHsluv(color)[2] < 70){
      let textColor = 'white';
      this.props.onTextColorChange(textColor)
    } else {
@@ -53,7 +63,7 @@ class CustomTheme extends Component {
    }
 
      this.setState({
-       customWidgetColor: "#" + convert.hsl.hex(customHSL[0], customHSL[1], 20),
+       customWidgetColor: hsluv.hsluvToHex([customHSL[0], customHSL[1], customHSL[2]]),
      })
 
      if (this.state.widgetType=='custom'){
@@ -101,14 +111,31 @@ class CustomTheme extends Component {
      color: event.target.value,
    })
 
-   let customHSL = convert.hex.hsl(event.target.value)
+   let customHSL = hsluv.hexToHsluv(event.target.value)
 
+   if (customHSL[1] > 70) {
+     customHSL[1] = 70
+   }
+
+   if (customHSL[2] < 30 && customHSL[2] > 15) {
+     customHSL[2] -= 10
+   } else {
+     customHSL[2] = 20
+   }
+
+   if (hsluv.hexToHsluv(event.target.value)[2] < 70){
+     let textColor = 'white';
+     this.props.onTextColorChange(textColor)
+   } else {
+     let textColor = 'rgba(0,0,0,0.8)'
+     this.props.onTextColorChange(textColor)
+   }
 
      this.setState({
-       customWidgetColor: "#" + convert.hsl.hex(customHSL[0], customHSL[1], 20),
+       customWidgetColor: hsluv.hsluvToHex([customHSL[0], customHSL[1], customHSL[2]]),
      })
     if (this.state.widgetType=='custom'){
-       this.props.onWidgetColorChange("#" + convert.hsl.hex(customHSL[0], customHSL[1], 20))
+       this.props.onWidgetColorChange(hsluv.hsluvToHex([customHSL[0], customHSL[1], customHSL[2]]))
      }
    this.props.onCustomColorChange(event.target.value)
 
